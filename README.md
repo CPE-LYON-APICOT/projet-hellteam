@@ -1,9 +1,9 @@
 ---
 binome:
-  - nom: "Nom1"
-    prenom: "Prénom1"
-  - nom: "Nom2"
-    prenom: "Prénom2"
+  - nom: "REY"
+    prenom: "Timothée"
+  - nom: "VILLETTE"
+    prenom: "Eloi"
 ---
 
 # Projet POO — 3ICS
