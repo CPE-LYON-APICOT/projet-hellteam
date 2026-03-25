@@ -53,6 +53,14 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 **Intégration** : 
 
+### DP 5 - *Pattern Decorator*
+
+**Feature associée** : Application d'upgrades par intermittence aux joueurs alliés
+
+**Justification** : Sachant qu'on souhaite pouvoir ajouter de temps à autre des upgrades aux deux joueurs, on va utiliser un pattern Decorator dans ce sens. Il empilera les upgrades une par une, et les stats seront calculées conséquence.
+
+**Intégration** :
+
 ## Diagrammes UML
 
 ### Diagramme 1 — *Type (classe, séquence, cas d'utilisation…)*
