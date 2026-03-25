@@ -4,7 +4,8 @@
 
 
 
-```Factory pour créer les ennemis
+```
+- Factory pour créer les ennemis
 - Pattern Decorateur permettant de rendre invincible, de tirer 2 fois plus vite, de faire autre chose temporairement...
 - Singleton des stats qui augmente le score, ...
 - Classe qui régit les power-ups (Strategy)
@@ -44,11 +45,11 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 **Intégration** : 
 
-### DP 4 — *Nom du pattern*
+### DP 4 — *Pattern Factory*
 
-**Feature associée** : 
+**Feature associée** : On a besoin d'un système permettant de créer facilement un enemy sans avoir besoin de connaître toutes ces fonctionnalités
 
-**Justification** : 
+**Justification** : On 
 
 **Intégration** : 
 
