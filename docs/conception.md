@@ -87,17 +87,7 @@ class Obstacle extends Entity {
 
 Ceci est un exemple, remplacez-le par votre propre diagramme. -->
 
-```plantuml
-@startuml
-
-@enduml
-```
 
 ### Diagramme 2 — *Type*
 
-```plantuml
-@startuml
-
-@enduml
-```
 
