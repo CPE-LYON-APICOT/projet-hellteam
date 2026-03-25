@@ -97,6 +97,41 @@ class Obstacle extends Entity {
 Ceci est un exemple, remplacez-le par votre propre diagramme. -->
 
 
-### Diagramme 2 — *Type*
+### Diagramme 2 — *Activité*
+```plantuml
+@startuml
 
+start
+:L'utilisateur arrive sur le menu;
+
+if (Combien de joueurs ?) then (2 joueurs)
+  :Démarrer partie (2 joueurs, plus difficile);
+else (1 joueur)
+  :Démarrer partie (1 joueur);
+endif
+
+:Apparition des vaisseaux et de l'interface (Score);
+
+repeat :Apparition et actions des ennemis;
+  
+  :Actions des joueurs (Déplacements, Tirs incluant tir ami);
+  :Sons d'événements et Mise à jour du score;
+
+  if (Tous les joueurs sont morts ?) then (Oui)
+    :Écran de Défaite;
+    :Retour au menu;
+    stop
+  elseif (Toutes les vagues sont terminées ?) then (Oui)
+    :Écran de Victoire;
+    :Retour au menu;
+    stop
+  elseif (Vague intermédiaire terminée/Temps défini atteint ?) then (Oui)
+    :Choix d'une Upgrade (NumPad);
+  else (La vague en cours continue)
+  endif
+
+repeat while (Partie en cours)
+
+@enduml
+```
 
