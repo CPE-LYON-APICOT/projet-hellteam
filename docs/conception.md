@@ -4,13 +4,13 @@
 
 
 
-Factory pour créer les ennemis
+```Factory pour créer les ennemis
 - Pattern Decorateur permettant de rendre invincible, de tirer 2 fois plus vite, de faire autre chose temporairement...
 - Singleton des stats qui augmente le score, ...
 - Classe qui régit les power-ups (Strategy)
 - Quand un ennemi est touché, un DP Observer fait un son
 - Un ennemi a un attribut qui pointe vers une interface EnemyStrategy qui doit être implémenté par au moins 2 classes de strategy. L'implémentation est choisie au RunTime
-
+```
 
 ## Vue d'ensemble
 
@@ -18,29 +18,29 @@ Factory pour créer les ennemis
 
 ## Design Patterns
 
-### DP 1 — *Nom du pattern*
+### DP 1 — *Pattern Strategy*
 
-**Feature associée** : 
+**Feature associée** : Création des vaisseaux ennemis 
 
-**Justification** : 
-<!-- Pourquoi ce pattern ? Pourquoi pas un autre ? -->
+**Justification** : Lorsque le système crée un ennemi, on souhaite pouvoir définir avec un ennemi avec un comportement particulier ou un autre comportement, dans des classes Strategy isolant et définissant ce comportement.
+Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée par des classes BossStrategy qui l'implémentera (qui définira des stats boostées, des capacités à tirer plusieurs fois), ou une autre classe BasicEnemyStrategy (qui définira le comportement d'un vaisseau ennemi classique), ...
 
 **Intégration** : 
 <!-- Comment s'intègre-t-il dans l'architecture ? -->
 
-### DP 2 — *Nom du pattern*
+### DP 2 — *Pattern Observer*
 
-**Feature associée** : 
+**Feature associée** : Sons joués lors d'événements dans le jeu 
 
-**Justification** : 
+**Justification** : On souhaite pouvoir jouer des sons lorsqu'un ennemi est tué (voire touché), lorsque l'un des deux joueurs meurt, lorsqu'on atteint une jauge dans le score, ... L'intérêt ici est d'utiliser un Observer qui va être capable de détecter l'événement représentant la mort d'un ennemi, un ennemi touché, un allié mort, un score atteint, ...  
 
 **Intégration** : 
 
-### DP 3 — *Nom du pattern*
+### DP 3 — *Pattern Singleton*
 
-**Feature associée** : 
+**Feature associée** : Tableau de scores de la partie
 
-**Justification** : 
+**Justification** : Dans les fonctionnalités sont voulues un tableau de statistiques affichées sur l'écran. On n'a besoin de l'instancier qu'une fois, et les appels seront effectués à cette instance. Ainsi, on va utiliser une classe utilisant un DP Singleton qui disposera de méthodes pouvant être appellées pour lui envoyer des statistiques.
 
 **Intégration** : 
 
