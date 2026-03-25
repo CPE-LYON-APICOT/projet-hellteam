@@ -49,7 +49,7 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 **Feature associée** : Création d'ennemis variés  
 
-**Justification** : On a besoin d'un système permettant de créer facilement et rapidement des énnemies divers. 
+**Justification** : On a besoin d'un système permettant de créer facilement et rapidement de divers ennemis. Ainsi, on va créer une EnemyFactory, qui sera responsable de créer les ennemis en fonction de ce qui lui est demandé. Par exemple, une méthode dans la Factory qui renverra un boss, 
 
 **Intégration** : 
 
