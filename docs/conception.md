@@ -19,7 +19,7 @@
 
 ## Design Patterns
 
-### DP 1 — *Pattern Strategy*
+### DP 1 — *Pattern Strategy* (implémenté dans le diagramme de classes)
 
 **Feature associée** : Création des vaisseaux ennemis 
 
@@ -29,7 +29,7 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 **Intégration** : 
 <!-- Comment s'intègre-t-il dans l'architecture ? -->
 
-### DP 2 — *Pattern Observer*
+### DP 2 — *Pattern Observer* 
 
 **Feature associée** : Sons joués lors d'événements dans le jeu 
 
@@ -37,7 +37,7 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 **Intégration** : 
 
-### DP 3 — *Pattern Singleton*
+### DP 3 — *Pattern Singleton* (implémenté dans le diagramme de classes)
 
 **Feature associée** : Tableau de scores de la partie
 
@@ -45,7 +45,7 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 **Intégration** : 
 
-### DP 4 — *Pattern Factory*
+### DP 4 — *Pattern Factory* (implémenté dans le diagramme de classes)
 
 **Feature associée** : Création d'ennemis variés  
 
@@ -53,7 +53,7 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 **Intégration** : 
 
-### DP 5 - *Pattern Decorator*
+### DP 5 - *Pattern Decorator* (quasiment implémenté dans le diagramme de classes)
 
 **Feature associée** : Application d'upgrades par intermittence aux joueurs alliés
 
@@ -63,38 +63,106 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 ## Diagrammes UML
 
-### Diagramme 1 — *Type (classe, séquence, cas d'utilisation…)*
+### Diagramme 1 — *Classe*
 
-<!-- Exemple de syntaxe PlantUML (à remplacer par votre diagramme) :
+Diagramme non terminé, mais un commentaire sera apprécié !
 
 ```plantuml
 @startuml
-interface Drawable {
-    + draw(gc : GraphicsContext) : void
+
+title ProjetHellTeam
+
+class Game {
+  + List<AllyShip> allyShip
+  + List<AllyProjectile> currentAllyProjectiles
+  + List<EnemyProjectile> currentEnemyProjectiles
 }
 
-abstract class Entity {
-    - x : double
-    - y : double
-    + getX() : double
-    + getY() : double
-    + update() : void
+interface EnemyStrategy{
+  
 }
 
-Entity ..|> Drawable
-
-class Player extends Entity {
-    - speed : double
-    + move(direction : Direction) : void
+abstract class Enemy {
+  'Pas encore de liste exhaustive de types d ennemis : va évoluer au fur et à mesure du jeu'
+  # EnemyStrategy strategy
+  # int speed
+  # int hp
+  # int projectileDamage
 }
 
-class Obstacle extends Entity {
-    - damage : int
+
+abstract class Projectile {
+  # int speed
+  # int width
 }
+
+class AllyProjectile extends Projectile{
+}
+
+class EnemyProjectile extends Projectile{
+}
+class HeavyEnemy extends Enemy{
+}
+
+class LightEnemy extends Enemy{
+}
+
+
+class RapidFireEnemyStrategy implements EnemyStrategy {
+}
+
+class RandomFireEnemyStrategy implements EnemyStrategy{
+}
+
+class StraightFireStrategy implements EnemyStrategy{
+}
+
+class ScoreData{
+  'Singleton'
+  - score
+  - vagueActuelle
+  + ScoreData getInstance()
+  + void addPointsToScore(int)
+  + void removePointsFromScore(int)
+  + void resetStats()
+}
+
+class EnemyFactory{
+  'Cette liste de création d ennemis n est pas exhaustive, elle va évidemment évoluer le long du projet'
+  + Enemy createHeavyEnemy()
+  + Enemy createLightEnemy()
+}
+
+class AllyShip{
+  + Int speed
+  + Int hp
+  + Int projectileDamage
+  + Int reloadTime
+}
+
+abstract class ShipUpgrade extends Commande{
+  # ShipPlayer upgradedShip  
+  - ShipUpgrade(AllyShip ship)
+}
+
+class HPShipUpgrade extends ShipUpgrade{
+  - HPShipUpgrade(AllyShip ship)
+}
+
+class SpeedShipUpgrade extends ShipUpgrade {
+
+}
+
+class ProjectileDamageShipUpgrade extends ShipUpgrade {
+}
+
+class ReloadTimeUpgrade extends ShipUpgrade {
+}
+Game --o AllyProjectile : has
+Game --o EnemyProjectile : has 
+Game --o AllyShip : has
 @enduml
 ```
-
-Ceci est un exemple, remplacez-le par votre propre diagramme. -->
 
 
 ### Diagramme 2 — *Activité*
