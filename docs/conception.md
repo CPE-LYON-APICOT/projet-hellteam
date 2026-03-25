@@ -47,9 +47,9 @@ Par exemple, on aura une interface Enemy Strategy qui pourra être implémentée
 
 ### DP 4 — *Pattern Factory*
 
-**Feature associée** : On a besoin d'un système permettant de créer facilement un enemy sans avoir besoin de connaître toutes ces fonctionnalités
+**Feature associée** : Création d'ennemis variés  
 
-**Justification** : On 
+**Justification** : On a besoin d'un système permettant de créer facilement et rapidement des énnemies divers. 
 
 **Intégration** : 
 
