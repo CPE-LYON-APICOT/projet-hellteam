@@ -2,10 +2,19 @@ package fr.cpe.model;
 
 public class ScoreDataSingleton {
     int score;
-    ScoreDataSingleton instance;
+    int maxScore;
+    int enemiesKilled;
+    int timeElapsed;
+    // currentWave : envisager système de vagues
+    // enemiesRemainingForWave
+
+    private static ScoreDataSingleton instance;
     // Considérer le système de vagues ?
 
-    ScoreDataSingleton getInstance()
+    private ScoreDataSingleton()
+    {
+    }
+    public static ScoreDataSingleton getInstance()
     {
         if (instance==null)
         {
@@ -14,3 +23,5 @@ public class ScoreDataSingleton {
         return instance;
     }
 }
+
+
