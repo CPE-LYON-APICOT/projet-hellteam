@@ -73,16 +73,43 @@ Diagramme non terminé, mais un commentaire sera apprécié !
 title ProjetHellTeam
 
 class Game {
-  + List<AllyShip> allyShip
+  + List<AllyShip> allyShips
+  + List<Enemy> enemyShips
   + List<AllyProjectile> currentAllyProjectiles
   + List<EnemyProjectile> currentEnemyProjectiles
 }
 
-interface EnemyStrategy{
-  
+
+class GameEventManager {
+  + observers : List<GameObserver>
+  + subscribe(GameObserver o)
+  + unsubscribe(GameObserver o)
+  + notify(GameEvent e)
 }
 
-abstract class Enemy {
+interface GameObserver {
+  + onEvent(e:GameEvent):void
+}
+
+class SoundObserver implements GameObserver
+{
+}
+
+class ScoreObserver implements GameObserver
+{
+}
+
+enum GameEvent{
+  ENEMY_HIT
+  ENEMY_KILLED
+  PLAYER_DIED
+  SCORE_TRESHOLD
+  }
+
+interface EnemyStrategy{
+}
+
+abstract class Enemy implements EventObserver{
   'Pas encore de liste exhaustive de types d ennemis : va évoluer au fur et à mesure du jeu'
   # EnemyStrategy strategy
   # int speed
@@ -140,9 +167,8 @@ class AllyShip{
   + Int reloadTime
 }
 
-abstract class ShipUpgrade extends Commande{
-  # ShipPlayer upgradedShip  
-  - ShipUpgrade(AllyShip ship)
+abstract class ShipUpgrade extends AllyShip{
+  # AllyShip upgradedShip  
 }
 
 class HPShipUpgrade extends ShipUpgrade{
@@ -158,10 +184,17 @@ class ProjectileDamageShipUpgrade extends ShipUpgrade {
 
 class ReloadTimeUpgrade extends ShipUpgrade {
 }
+
+
+
+
 Game --o AllyProjectile : has
 Game --o EnemyProjectile : has 
 Game --o AllyShip : has
+GameEventManager --> GameObserver : notifie
 @enduml
+
+
 ```
 
 
