@@ -71,20 +71,21 @@ Diagramme non terminé, mais un commentaire sera apprécié !
 @startuml
 
 title ProjetHellTeam
-
+''' Envisager dans la méthode le fait que calculerProximite prendra en paramètre des objets avec des coordonées et non les coordonées elle meme'''
 class Game {
   + List<AllyShip> allyShips
   + List<Enemy> enemyShips
   + List<AllyProjectile> currentAllyProjectiles
   + List<EnemyProjectile> currentEnemyProjectiles
-}
-
-
-class GameEventManager {
+  
+  + calculerProjectilsAtteintsEnnemisEtAllies()
+  + calculerProximite(x1, y1, x2, y2):bool
   + observers : List<GameObserver>
   + subscribe(GameObserver o)
   + unsubscribe(GameObserver o)
-  + notify(GameEvent e)
+  + notifierObserveurs()
+
+
 }
 
 interface GameObserver {
@@ -109,18 +110,22 @@ enum GameEvent{
 interface EnemyStrategy{
 }
 
-abstract class Enemy implements EventObserver{
+abstract class Enemy{
   'Pas encore de liste exhaustive de types d ennemis : va évoluer au fur et à mesure du jeu'
   # EnemyStrategy strategy
   # int speed
   # int hp
   # int projectileDamage
+  # int x
+  # int y
 }
 
 
 abstract class Projectile {
   # int speed
   # int width
+  # int x
+  # int y
 }
 
 class AllyProjectile extends Projectile{
@@ -165,6 +170,8 @@ class AllyShip{
   + Int hp
   + Int projectileDamage
   + Int reloadTime
+  + int x
+  + int y
 }
 
 abstract class ShipUpgrade extends AllyShip{
@@ -191,7 +198,7 @@ class ReloadTimeUpgrade extends ShipUpgrade {
 Game --o AllyProjectile : has
 Game --o EnemyProjectile : has 
 Game --o AllyShip : has
-GameEventManager --> GameObserver : notifie
+Game --> GameObserver : notifie
 @enduml
 
 
