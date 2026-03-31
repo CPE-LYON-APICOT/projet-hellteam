@@ -59,10 +59,11 @@ import javafx.scene.text.Text;
 public class GameService {
 
     private final BallService ballService;
+    private final AllyShipService allyShipService;
 
     @Inject
-    public GameService(BallService ballService) {
-        this.ballService = ballService;
+    public GameService(BallService ballService, AllyShipService allyShipService) {
+        this.ballService = ballService;this.allyShipService = allyShipService;
     }
 
     /**
@@ -70,6 +71,8 @@ public class GameService {
      */
     public void init(Pane gamePane) {
         ballService.init(gamePane);
+        allyShipService.init(gamePane);
+
 
         Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
         text.setFill(Color.web("#cdd6f4"));
@@ -81,5 +84,6 @@ public class GameService {
      */
     public void update(double width, double height) {
         ballService.update(width, height);
+        allyShipService.update();
     }
 }

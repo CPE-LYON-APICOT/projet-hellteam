@@ -1,10 +1,10 @@
 package fr.cpe.model;
 
 abstract public class SpacialObject {
-    protected double x;
-    protected double y;
-    protected int speed;
-    protected int direction;// Direction étant pour l'instant définie de 0 a 360 degrés
+    public double x;
+    public double y;
+    public int speed;
+    public int direction;// Direction étant pour l'instant définie de 0 a 360 degrés
 
     public SpacialObject(double x, double y, int direction, int speed) {
         this.x = x;
