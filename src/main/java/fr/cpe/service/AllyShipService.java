@@ -73,9 +73,6 @@ public class AllyShipService {
         gamePane.getChildren().add(ballNode);
     }
 
-    /**
-     * Met à jour la balle : clavier, physique, rebonds, synchronisation vue.
-     */
     public void update() {
 
         if (inputService.isKeyPressed(KeyCode.LEFT))  ship.x-=1;
