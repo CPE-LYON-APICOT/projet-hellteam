@@ -203,7 +203,7 @@ Game --> GameObserver : notifie
 
 
 ```
-
+![img_1.png](img_1.png)
 
 ### Diagramme 2 — *Activité*
 ```plantuml
