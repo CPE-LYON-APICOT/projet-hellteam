@@ -34,6 +34,13 @@ import javafx.scene.shape.Circle;
  *   public GameService(BallService ballService) { ... }
  * </pre>
  */
+
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.util.Objects;
+
 public class BallService {
 
     private static final double RADIUS = 60;
@@ -41,7 +48,7 @@ public class BallService {
 
     private final InputService inputService;
     private Ball ball;
-    private Circle ballNode;
+    private ImageView ballNode;  // Circle → ImageView
 
     @Inject
     public BallService(InputService inputService) {
@@ -54,16 +61,19 @@ public class BallService {
     public void init(Pane gamePane) {
         ball = new Ball(100, 100, 3, 2, Color.web("#f38ba8"));
 
-        ballNode = new Circle(RADIUS, ball.getColor());
-        ballNode.setCenterX(ball.x);
-        ballNode.setCenterY(ball.y);
+        // Charge l'image depuis les resources
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/dfff.png")));
+        ballNode = new ImageView(image);
+        ballNode.setFitWidth(RADIUS * 2);
+        ballNode.setFitHeight(RADIUS * 2);
+        ballNode.setPreserveRatio(true);
 
-        // Clic sur la balle → changement de couleur
-        ballNode.setOnMouseClicked(e -> {
-            Color c = Color.color(Math.random(), Math.random(), Math.random());
-            ball.setColor(c);
-            ballNode.setFill(c);
-        });
+        // Position initiale (ImageView se positionne par son coin supérieur gauche)
+        ballNode.setX(ball.x - RADIUS);
+        ballNode.setY(ball.y - RADIUS);
+
+        // Clic sur la balle → changement de couleur via ColorAdjust
+        ballNode.setOnMouseClicked(e -> applyRandomHue());
 
         gamePane.getChildren().add(ballNode);
     }
@@ -72,7 +82,6 @@ public class BallService {
      * Met à jour la balle : clavier, physique, rebonds, synchronisation vue.
      */
     public void update(double width, double height) {
-        // Les flèches courbent la trajectoire
         if (inputService.isKeyPressed(KeyCode.LEFT))  ball.dx -= ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.RIGHT)) ball.dx += ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.UP))    ball.dy -= ACCELERATION;
@@ -92,13 +101,24 @@ public class BallService {
             bounced = true;
         }
 
-        if (bounced) {
-            ball.setColor(Color.color(Math.random(), Math.random(), Math.random()));
-        }
+        if (bounced) applyRandomHue();
 
-        // Synchronise le modèle → la vue
-        ballNode.setCenterX(ball.x);
-        ballNode.setCenterY(ball.y);
-        ballNode.setFill(ball.getColor());
+        // Synchronise modèle → vue (coin sup. gauche = centre - rayon)
+        ballNode.setX(ball.x - RADIUS);
+        ballNode.setY(ball.y - RADIUS);
+        // Synchronise modèle → vue
+        ballNode.setX(ball.x - RADIUS);
+        ballNode.setY(ball.y - RADIUS);
+
+// Calcul de l'angle en degrés
+        double angle = Math.toDegrees(Math.atan2(ball.dy, ball.dx));
+        ballNode.setRotate(angle);
+    }
+
+    /** Applique une teinte aléatoire à l'image via un filtre ColorAdjust. */
+    private void applyRandomHue() {
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setHue(Math.random() * 2 - 1); // valeur entre -1.0 et 1.0
+        ballNode.setEffect(colorAdjust);
     }
 }
