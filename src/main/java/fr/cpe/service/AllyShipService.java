@@ -41,15 +41,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class AllyShipService {
 
 
     private final InputService inputService;
-    private ImageView ballNode;  // Circle → ImageView
+    private ImageView shipNodeJ1;  // Circle → ImageView
+    private ImageView shipNodeJ2;
     private AllyShip ship1;
     private AllyShip ship2;
+    private boolean twoPlayers = false;
     private Text text;
+    private Text textJ2;
     @Inject
     public AllyShipService(InputService inputService) {
         this.inputService = inputService;
@@ -59,25 +63,38 @@ public class AllyShipService {
      * Crée la balle (modèle + vue) et l'ajoute au Pane.
      */
     public void init(Pane gamePane) {
+        int random = new Random().nextInt(2) + 1;
+        System.out.println(random);
+        if (random ==1) twoPlayers = true; // Vérifie si joueur 2 accepté
         ship1 = new AllyShip(0, 0, 1, 1);
         // Charge l'image depuis les resources
         Image image = returnAllyShipImage();
-        ballNode = new ImageView(image);
-
-        // Position initiale
-        ballNode.setX(0);
-        ballNode.setY(0);
+        shipNodeJ1 = new ImageView(image);
+        shipNodeJ1.setX(ship1.x);
+        shipNodeJ1.setY(ship1.y);
 
         // Clic sur la balle → changement de couleur via ColorAdjust
-        ballNode.setOnMouseClicked(e -> applyRandomHue());
-        ballNode.setFitWidth(60);
-        ballNode.setFitHeight(60);
-
+        shipNodeJ1.setFitWidth(60);
+        shipNodeJ1.setFitHeight(60);
         text = new Text(20, 30, ""+ ship1.x+ ship1.y);
-
-        gamePane.getChildren().add(ballNode);
+        gamePane.getChildren().add(shipNodeJ1);
         gamePane.getChildren().add(text);
+
+
+        if (twoPlayers)
+        {
+            ship2 = new AllyShip(200,200,1,1);
+            shipNodeJ2 = new ImageView(image);
+            shipNodeJ2.setX(ship2.x);
+            shipNodeJ2.setY(ship2.y);
+            shipNodeJ2.setFitWidth(60);
+            shipNodeJ2.setFitHeight(60);
+            textJ2 = new Text(20, 40, ""+ ship2.x+ ship2.y);
+            gamePane.getChildren().add(shipNodeJ2);
+            gamePane.getChildren().add(textJ2);
+        }
     }
+
 
     public void update() {
 
@@ -86,10 +103,24 @@ public class AllyShipService {
         if (inputService.isKeyPressed(KeyCode.UP))    ship1.y-=1;
         if (inputService.isKeyPressed(KeyCode.DOWN))  ship1.y+=1;
 
+        if(twoPlayers) {
+            if (inputService.isKeyPressed(KeyCode.Q)) ship2.x -= 1;
+            if (inputService.isKeyPressed(KeyCode.D)) ship2.x += 1;
+            if (inputService.isKeyPressed(KeyCode.Z)) ship2.y -= 1;
+            if (inputService.isKeyPressed(KeyCode.S)) ship2.y += 1;
+
+            text.setText("x: " + ship2.x + "  y: " + ship2.y);
+            shipNodeJ2.setX(ship2.x);
+            shipNodeJ2.setY(ship2.y);
+        }
         text.setText("x: " + ship1.x + "  y: " + ship1.y);
 
-        ballNode.setX(ship1.x);
-        ballNode.setY(ship1.y);
+
+        shipNodeJ1.setX(ship1.x);
+        shipNodeJ1.setY(ship1.y);
+
+
+
         /*if (inputService.isKeyPressed(KeyCode.LEFT))  ball.dx -= ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.RIGHT)) ball.dx += ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.UP))    ball.dy -= ACCELERATION;
@@ -127,7 +158,7 @@ public class AllyShipService {
     private void applyRandomHue() {
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setHue(Math.random() * 2 - 1); // valeur entre -1.0 et 1.0
-        ballNode.setEffect(colorAdjust);
+        shipNodeJ1.setEffect(colorAdjust);
     }
 
     public Image returnAllyShipImage()
