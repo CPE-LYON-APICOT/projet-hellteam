@@ -87,5 +87,6 @@ public class GameService {
     public void update(double width, double height) {
         //ballService.update(width, height);
         allyShipService.update();
+        // Ici que doivent être calculées les collisions, envoyer les events, etc ! Faire despawn les ships
     }
 }
