@@ -16,6 +16,7 @@ import fr.cpe.model.Ball;
 import fr.cpe.model.SpacialObject;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
@@ -83,6 +84,7 @@ public class AllyShipService {
         shipNodeJ1.setFitWidth(60);
         shipNodeJ1.setFitHeight(60);
         text = new Text(20, 30, "x: " + ship1.x + "  y: " + ship1.y);
+        text.setFill(Color.WHITE);
         gamePane.getChildren().add(shipNodeJ1);
         gamePane.getChildren().add(text);
 
@@ -95,6 +97,7 @@ public class AllyShipService {
             shipNodeJ2.setFitWidth(60);
             shipNodeJ2.setFitHeight(60);
             textJ2 = new Text(20, 40, ""+ ship2.x+ ship2.y);
+            textJ2.setFill(Color.WHITE);
             gamePane.getChildren().add(shipNodeJ2);
             gamePane.getChildren().add(textJ2);
 
