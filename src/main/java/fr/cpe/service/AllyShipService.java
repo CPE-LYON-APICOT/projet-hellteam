@@ -184,7 +184,7 @@ public class AllyShipService {
 
     public Image returnAllyShipImage()
     {
-        return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/dfff.png")));
+        return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/defaultallyship.png")));
     }
 
     public Image returnAllyProjectileImage(){

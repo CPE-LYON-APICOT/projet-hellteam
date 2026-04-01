@@ -9,4 +9,6 @@ abstract public class EnemyShip extends Ship {
         super(x, y, direction, speed, hp, maxHp, reloadTime);
         this.strategy = strategy;
     }
+    public abstract String getType();
+
 }

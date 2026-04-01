@@ -62,7 +62,7 @@ public class BallService {
         ball = new Ball(100, 100, 3, 2, Color.web("#f38ba8"));
 
         // Charge l'image depuis les resources
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/dfff.png")));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/defaultallyship.png")));
         ballNode = new ImageView(image);
         ballNode.setFitWidth(RADIUS * 2);
         ballNode.setFitHeight(RADIUS * 2);
