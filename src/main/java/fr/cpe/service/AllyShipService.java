@@ -13,6 +13,7 @@ import com.google.inject.Inject;
 import fr.cpe.engine.InputService;
 import fr.cpe.model.AllyShip;
 import fr.cpe.model.Ball;
+import fr.cpe.model.SpacialObject;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -85,7 +86,6 @@ public class AllyShipService {
         gamePane.getChildren().add(shipNodeJ1);
         gamePane.getChildren().add(text);
 
-
         if (twoPlayers)
         {
             ship2 = new AllyShip(200,200,1,1);
@@ -107,12 +107,24 @@ public class AllyShipService {
 
 
     public void update() {
+        if (inputService.isKeyPressed(KeyCode.LEFT))  ship1.angle -= SpacialObject.ROTATION_SPEED;
+        if (inputService.isKeyPressed(KeyCode.RIGHT)) ship1.angle += SpacialObject.ROTATION_SPEED;
+        if (inputService.isKeyPressed(KeyCode.UP)) {
+            ship1.x += Math.cos(Math.toRadians(ship1.angle));
+            ship1.y += Math.sin(Math.toRadians(ship1.angle));
+        }
+        if (inputService.isKeyPressed(KeyCode.DOWN)) {
+            ship1.x -= Math.cos(Math.toRadians(ship1.angle));
+            ship1.y -= Math.sin(Math.toRadians(ship1.angle));
+        }
 
-        if (inputService.isKeyPressed(KeyCode.LEFT))  ship1.x-=1;
-        if (inputService.isKeyPressed(KeyCode.RIGHT)) ship1.x+=1;
-        if (inputService.isKeyPressed(KeyCode.UP))    ship1.y-=1;
-        if (inputService.isKeyPressed(KeyCode.DOWN))  ship1.y+=1;
+        text.setText("x: " + ship1.x + "  y: " + ship1.y);
 
+
+        shipNodeJ1.setX(ship1.x);
+        shipNodeJ1.setY(ship1.y);
+
+        shipNodeJ1.setRotate(ship1.angle);
         if(twoPlayers) {
             if (inputService.isKeyPressed(KeyCode.Q)) ship2.x -= 1;
             if (inputService.isKeyPressed(KeyCode.D)) ship2.x += 1;
@@ -123,11 +135,7 @@ public class AllyShipService {
             shipNodeJ2.setX(ship2.x);
             shipNodeJ2.setY(ship2.y);
         }
-        text.setText("x: " + ship1.x + "  y: " + ship1.y);
 
-
-        shipNodeJ1.setX(ship1.x);
-        shipNodeJ1.setY(ship1.y);
 
 
 

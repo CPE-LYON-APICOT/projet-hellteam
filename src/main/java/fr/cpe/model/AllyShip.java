@@ -5,7 +5,7 @@ public class AllyShip extends SpacialObject {
     public int maxHp;
     public int reloadTime;
 
-    public AllyShip(double x, double y, int direction, int speed) {
+    public AllyShip(double x, double y, double direction, int speed) {
         super(x, y, direction, speed);
     }
 }
