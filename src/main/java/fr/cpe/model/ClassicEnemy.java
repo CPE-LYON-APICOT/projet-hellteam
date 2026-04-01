@@ -4,4 +4,9 @@ public class ClassicEnemy extends Enemy{
     public ClassicEnemy (double x, double y, int direction, int speed) {
         super(x, y, direction, speed);
     }
+
+    @Override
+    public String getType() {
+        return "ClassicEnemy";
+    }
 }

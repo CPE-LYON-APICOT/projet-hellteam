@@ -11,4 +11,6 @@ abstract public class Enemy extends SpacialObject implements EnemyStrategy {
     public Enemy(double x, double y, int direction, int speed) {
         super(x, y, direction, speed);
     }
+
+    public abstract String getType();
 }
