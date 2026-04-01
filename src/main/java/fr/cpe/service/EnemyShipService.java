@@ -17,7 +17,7 @@ public class EnemyShipService {
 
         // Crée 5 ennemis et les place dans le Pane
         for (int i = 0; i < 10; i++) {
-            Enemy enemy = EnemyFactory.CreateEnemy(10.0 + (i * 80), 10.0, 1, 5); // Décale chaque ennemi horizontalement
+            Enemy enemy = EnemyFactory.CreateEnemy(10.0 + (i * 80), 40.0, 1, 5); // Décale chaque ennemi horizontalement
             if (enemy != null) {
                 enemyList.add(enemy);
                 Image enemyImage = getImageForEnemy(enemy);
