@@ -74,9 +74,9 @@ public class GameService {
         allyShipService.init(gamePane);
 
 
-        Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
+        /*Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
         text.setFill(Color.web("#cdd6f4"));
-        gamePane.getChildren().add(text);
+        gamePane.getChildren().add(text);*/
     }
 
     /**

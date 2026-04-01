@@ -39,6 +39,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 import java.util.Objects;
 
@@ -48,6 +49,7 @@ public class AllyShipService {
     private final InputService inputService;
     private ImageView ballNode;  // Circle → ImageView
     private AllyShip ship;
+    private Text text;
     @Inject
     public AllyShipService(InputService inputService) {
         this.inputService = inputService;
@@ -70,7 +72,11 @@ public class AllyShipService {
         ballNode.setOnMouseClicked(e -> applyRandomHue());
         ballNode.setFitWidth(60);
         ballNode.setFitHeight(60);
+
+        text = new Text(20, 30, ""+ship.x+ship.y);
+
         gamePane.getChildren().add(ballNode);
+        gamePane.getChildren().add(text);
     }
 
     public void update() {
@@ -80,9 +86,10 @@ public class AllyShipService {
         if (inputService.isKeyPressed(KeyCode.UP))    ship.y-=1;
         if (inputService.isKeyPressed(KeyCode.DOWN))  ship.y+=1;
 
+        text.setText("x: " + ship.x + "  y: " + ship.y);
+
         ballNode.setX(ship.x);
         ballNode.setY(ship.y);
-
         /*if (inputService.isKeyPressed(KeyCode.LEFT))  ball.dx -= ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.RIGHT)) ball.dx += ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.UP))    ball.dy -= ACCELERATION;
