@@ -62,10 +62,12 @@ public class GameService {
 
     //private final BallService ballService;
     private final AllyShipService allyShipService;
+    private EnemyShipService enemyShipService;
     @Inject
-    public GameService(BallService ballService, AllyShipService allyShipService) {
+    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService) {
         //this.ballService = ballService;
         this.allyShipService = allyShipService;
+        this.enemyShipService = enemyShipService;
     }
 
     /**
@@ -74,6 +76,7 @@ public class GameService {
     public void init(Pane gamePane) {
         //ballService.init(gamePane);
         allyShipService.init(gamePane);
+        enemyShipService.init(gamePane);
 
 
         /*Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
