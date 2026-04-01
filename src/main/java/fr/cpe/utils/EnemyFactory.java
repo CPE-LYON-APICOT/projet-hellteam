@@ -13,9 +13,9 @@ public class EnemyFactory {
         int rand = random.nextInt(3) + 1;
 
         return switch (rand) {
-            case 1 -> new ClassicEnemy(0, 0, 0, 0);
-            case 2 -> new LightEnemy(0, 0, 0, 0);
-            case 3 -> new HeavyEnemy(0, 0, 0, 0);
+            case 1 -> new ClassicEnemy(x, y, direction, speed);
+            case 2 -> new LightEnemy(x, y, direction, speed);
+            case 3 -> new HeavyEnemy(x, y, direction, speed);
             default -> null;
         };
     }
