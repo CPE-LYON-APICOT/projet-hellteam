@@ -58,19 +58,20 @@ import javafx.scene.text.Text;
  */
 public class GameService {
 
-    private final BallService ballService;
+    //private final BallService ballService;
     private final AllyShipService allyShipService;
 
     @Inject
     public GameService(BallService ballService, AllyShipService allyShipService) {
-        this.ballService = ballService;this.allyShipService = allyShipService;
+        //this.ballService = ballService;
+        this.allyShipService = allyShipService;
     }
 
     /**
      * Initialise les éléments visuels du jeu (appelé une fois au démarrage).
      */
     public void init(Pane gamePane) {
-        ballService.init(gamePane);
+        //ballService.init(gamePane);
         allyShipService.init(gamePane);
 
 
@@ -83,7 +84,7 @@ public class GameService {
      * Met à jour l'état du jeu (appelé à chaque frame).
      */
     public void update(double width, double height) {
-        ballService.update(width, height);
+        //ballService.update(width, height);
         allyShipService.update();
     }
 }
