@@ -15,7 +15,6 @@ import fr.cpe.model.AllyShip;
 import fr.cpe.model.Ball;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
@@ -48,7 +47,8 @@ public class AllyShipService {
 
     private final InputService inputService;
     private ImageView ballNode;  // Circle → ImageView
-    private AllyShip ship;
+    private AllyShip ship1;
+    private AllyShip ship2;
     private Text text;
     @Inject
     public AllyShipService(InputService inputService) {
@@ -59,12 +59,12 @@ public class AllyShipService {
      * Crée la balle (modèle + vue) et l'ajoute au Pane.
      */
     public void init(Pane gamePane) {
-        ship = new AllyShip(0, 0, 1, 1);
+        ship1 = new AllyShip(0, 0, 1, 1);
         // Charge l'image depuis les resources
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/dfff.png")));
+        Image image = returnAllyShipImage();
         ballNode = new ImageView(image);
 
-        // Position initiale (ImageView se positionne par son coin supérieur gauche)
+        // Position initiale
         ballNode.setX(0);
         ballNode.setY(0);
 
@@ -73,7 +73,7 @@ public class AllyShipService {
         ballNode.setFitWidth(60);
         ballNode.setFitHeight(60);
 
-        text = new Text(20, 30, ""+ship.x+ship.y);
+        text = new Text(20, 30, ""+ ship1.x+ ship1.y);
 
         gamePane.getChildren().add(ballNode);
         gamePane.getChildren().add(text);
@@ -81,15 +81,15 @@ public class AllyShipService {
 
     public void update() {
 
-        if (inputService.isKeyPressed(KeyCode.LEFT))  ship.x-=1;
-        if (inputService.isKeyPressed(KeyCode.RIGHT)) ship.x+=1;
-        if (inputService.isKeyPressed(KeyCode.UP))    ship.y-=1;
-        if (inputService.isKeyPressed(KeyCode.DOWN))  ship.y+=1;
+        if (inputService.isKeyPressed(KeyCode.LEFT))  ship1.x-=1;
+        if (inputService.isKeyPressed(KeyCode.RIGHT)) ship1.x+=1;
+        if (inputService.isKeyPressed(KeyCode.UP))    ship1.y-=1;
+        if (inputService.isKeyPressed(KeyCode.DOWN))  ship1.y+=1;
 
-        text.setText("x: " + ship.x + "  y: " + ship.y);
+        text.setText("x: " + ship1.x + "  y: " + ship1.y);
 
-        ballNode.setX(ship.x);
-        ballNode.setY(ship.y);
+        ballNode.setX(ship1.x);
+        ballNode.setY(ship1.y);
         /*if (inputService.isKeyPressed(KeyCode.LEFT))  ball.dx -= ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.RIGHT)) ball.dx += ACCELERATION;
         if (inputService.isKeyPressed(KeyCode.UP))    ball.dy -= ACCELERATION;
@@ -128,5 +128,10 @@ public class AllyShipService {
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setHue(Math.random() * 2 - 1); // valeur entre -1.0 et 1.0
         ballNode.setEffect(colorAdjust);
+    }
+
+    public Image returnAllyShipImage()
+    {
+        return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/dfff.png")));
     }
 }

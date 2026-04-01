@@ -17,6 +17,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.util.List;
+
 /**
  * Service de jeu — gère l'état du jeu et ses éléments visuels.
  *
@@ -60,7 +62,6 @@ public class GameService {
 
     //private final BallService ballService;
     private final AllyShipService allyShipService;
-
     @Inject
     public GameService(BallService ballService, AllyShipService allyShipService) {
         //this.ballService = ballService;
