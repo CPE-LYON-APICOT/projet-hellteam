@@ -1,21 +1,21 @@
 package fr.cpe.utils;
 
-import fr.cpe.model.ClassicEnemy;
-import fr.cpe.model.Enemy;
-import fr.cpe.model.HeavyEnemy;
-import fr.cpe.model.LightEnemy;
+import fr.cpe.model.ClassicEnemyShip;
+import fr.cpe.model.EnemyShip;
+import fr.cpe.model.HeavyEnemyShip;
+import fr.cpe.model.LightEnemyShip;
 import java.util.Random;
 
 public class EnemyFactory {
 
-    static public Enemy CreateEnemy(double x, double y, int direction, int speed) {
+    static public EnemyShip CreateEnemy(double x, double y, int direction, int speed, int hp, int maxHp, int reloadTime) {
         Random random = new Random(System.currentTimeMillis());
         int rand = random.nextInt(3) + 1;
 
         return switch (rand) {
-            case 1 -> new ClassicEnemy(x, y, direction, speed);
-            case 2 -> new LightEnemy(x, y, direction, speed);
-            case 3 -> new HeavyEnemy(x, y, direction, speed);
+            case 1 -> new ClassicEnemyShip(x, y, direction, speed, hp, maxHp, reloadTime, null);
+            case 2 -> new LightEnemyShip(x, y, direction, speed, hp, maxHp, reloadTime, null);
+            case 3 -> new HeavyEnemyShip(x, y, direction, speed, hp, maxHp, reloadTime, null);
             default -> null;
         };
     }

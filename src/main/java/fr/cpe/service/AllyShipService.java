@@ -73,7 +73,7 @@ public class AllyShipService {
         int random = new Random().nextInt(2) + 1;
         System.out.println(random);
         twoPlayers = (random == 1); // Vérifie si joueur 2 accepté
-        ship1 = new AllyShip(0, 0, 1, 1);
+        ship1 = new AllyShip(0, 0, 1, 1, 100, 100, 1);
         // Charge l'image depuis les resources
         allyShipImage = returnAllyShipImage();
         shipNodeJ1 = new ImageView(allyShipImage);
@@ -90,7 +90,7 @@ public class AllyShipService {
 
         if (twoPlayers)
         {
-            ship2 = new AllyShip(200,200,1,1);
+            ship2 = new AllyShip(200,200,1,1, 100, 100, 1);
             shipNodeJ2 = new ImageView(allyShipImage);
             shipNodeJ2.setX(ship2.x);
             shipNodeJ2.setY(ship2.y);
