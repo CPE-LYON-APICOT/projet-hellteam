@@ -56,8 +56,8 @@ public class AllyShipService {
     private AllyShip ship2;
     private Image allyShipImage;
     private boolean twoPlayers = false;
-    private Text text;
-    private Text textJ2;
+    private Text textPositionShip1;
+    private Text textPositionShip2;
     @Inject
     public AllyShipService(InputService inputService) {
         this.inputService = inputService;
@@ -72,7 +72,7 @@ public class AllyShipService {
 
         int random = new Random().nextInt(2) + 1;
         System.out.println(random);
-        if (random ==1) twoPlayers = true; // Vérifie si joueur 2 accepté
+        twoPlayers = (random == 1); // Vérifie si joueur 2 accepté
         ship1 = new AllyShip(0, 0, 1, 1);
         // Charge l'image depuis les resources
         allyShipImage = returnAllyShipImage();
@@ -83,10 +83,10 @@ public class AllyShipService {
         // Clic sur la balle → changement de couleur via ColorAdjust
         shipNodeJ1.setFitWidth(60);
         shipNodeJ1.setFitHeight(60);
-        text = new Text(20, 30, "x: " + ship1.x + "  y: " + ship1.y);
-        text.setFill(Color.WHITE);
+        textPositionShip1 = new Text(20, 30, "x: " + ship1.x + "  y: " + ship1.y);
+        textPositionShip1.setFill(Color.WHITE);
         gamePane.getChildren().add(shipNodeJ1);
-        gamePane.getChildren().add(text);
+        gamePane.getChildren().add(textPositionShip1);
 
         if (twoPlayers)
         {
@@ -96,10 +96,10 @@ public class AllyShipService {
             shipNodeJ2.setY(ship2.y);
             shipNodeJ2.setFitWidth(60);
             shipNodeJ2.setFitHeight(60);
-            textJ2 = new Text(20, 40, ""+ ship2.x+ ship2.y);
-            textJ2.setFill(Color.WHITE);
+            textPositionShip2 = new Text(20, 40, ""+ ship2.x+ ship2.y);
+            textPositionShip2.setFill(Color.WHITE);
             gamePane.getChildren().add(shipNodeJ2);
-            gamePane.getChildren().add(textJ2);
+            gamePane.getChildren().add(textPositionShip2);
 
             //instancierJoueur(shipNodeJ2, ship2, 20,40);
         }
@@ -121,7 +121,7 @@ public class AllyShipService {
             ship1.y -= Math.sin(Math.toRadians(ship1.angle));
         }
 
-        text.setText("x: " + ship1.x + "  y: " + ship1.y);
+        textPositionShip1.setText("x: " + ship1.x + "  y: " + ship1.y);
 
 
         shipNodeJ1.setX(ship1.x);
@@ -134,7 +134,7 @@ public class AllyShipService {
             if (inputService.isKeyPressed(KeyCode.Z)) ship2.y -= 1;
             if (inputService.isKeyPressed(KeyCode.S)) ship2.y += 1;
 
-            textJ2.setText("x: " + ship2.x + "  y: " + ship2.y);
+            textPositionShip2.setText("x: " + ship2.x + "  y: " + ship2.y);
             shipNodeJ2.setX(ship2.x);
             shipNodeJ2.setY(ship2.y);
         }
