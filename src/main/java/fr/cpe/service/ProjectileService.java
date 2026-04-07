@@ -56,6 +56,7 @@ public class ProjectileService {
         imageViewProjectile.setFitHeight(20);
         imageViewProjectile.setX(projectile.x);
         imageViewProjectile.setY(projectile.y);
+        imageViewProjectile.setRotate(projectile.angle);
         gamePaneInstance.getChildren().add(imageViewProjectile);
 
         projectileAllyMap.put((AllyProjectile) projectile, imageViewProjectile);
@@ -66,6 +67,7 @@ public class ProjectileService {
             imageViewProjectile2.setFitHeight(20);
             imageViewProjectile2.setX(projectile2.x);
             imageViewProjectile2.setY(projectile2.y);
+            imageViewProjectile2.setRotate(projectile2.angle);
             gamePaneInstance.getChildren().add(imageViewProjectile2);
             projectileAllyMap.put((AllyProjectile) projectile2, imageViewProjectile2);
         }
