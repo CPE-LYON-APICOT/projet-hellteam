@@ -45,7 +45,5 @@ public class EnemyShipService {
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
     }
 
-    private Image returnEnemyProjectileImage() {
-        return new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/enemyproj.png")));
-    }
+
 }

@@ -63,6 +63,7 @@ public class GameService {
     //private final BallService ballService;
     private final AllyShipService allyShipService;
     private EnemyShipService enemyShipService;
+    private ProjectileService projectileService;
     @Inject
     public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService) {
         //this.ballService = ballService;
