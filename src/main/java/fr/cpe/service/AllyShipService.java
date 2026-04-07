@@ -128,15 +128,26 @@ public class AllyShipService {
         shipNodeJ1.setY(ship1.y);
 
         shipNodeJ1.setRotate(ship1.angle);
+
         if (twoPlayers) {
-            if (inputService.isKeyPressed(KeyCode.Q)) ship2.x -= 1;
-            if (inputService.isKeyPressed(KeyCode.D)) ship2.x += 1;
-            if (inputService.isKeyPressed(KeyCode.Z)) ship2.y -= 1;
-            if (inputService.isKeyPressed(KeyCode.S)) ship2.y += 1;
+            if (inputService.isKeyPressed(KeyCode.Q)) ship2.angle -= SpacialObject.ROTATION_SPEED;
+            if (inputService.isKeyPressed(KeyCode.D)) ship2.angle += SpacialObject.ROTATION_SPEED;
+            if (inputService.isKeyPressed(KeyCode.Z)) {
+                ship2.x += Math.cos(Math.toRadians(ship2.angle));
+                ship2.y += Math.sin(Math.toRadians(ship2.angle));
+            }
+            if (inputService.isKeyPressed(KeyCode.S)) {
+                ship2.x -= Math.cos(Math.toRadians(ship2.angle));
+                ship2.y -= Math.sin(Math.toRadians(ship2.angle));
+            }
 
             textPositionShip2.setText("x: " + ship2.x + "  y: " + ship2.y);
+
+
             shipNodeJ2.setX(ship2.x);
             shipNodeJ2.setY(ship2.y);
+
+            shipNodeJ2.setRotate(ship2.angle);
         }
     }
 
