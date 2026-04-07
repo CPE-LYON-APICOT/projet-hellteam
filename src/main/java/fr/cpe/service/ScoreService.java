@@ -2,14 +2,10 @@ package fr.cpe.service;
 
 import com.google.inject.Inject;
 import fr.cpe.engine.InputService;
-import fr.cpe.model.EventService;
 import fr.cpe.model.ScoreDataSingleton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-
-import javax.swing.text.TableView;
-import java.awt.*;
 
 public class ScoreService {
     private final ScoreDataSingleton scoreDataSingleton = ScoreDataSingleton.getInstance();
@@ -43,14 +39,11 @@ public class ScoreService {
     {
         // 670-14 coordonées panneau de score
         gamePane.getChildren().add(scoreText);
-        System.out.println("Element ajoute ??");
-
     }
 
     public void update()
     {
         scoreDataSingleton.timeElapsed += (1.0/60.0); // Simule le temps écoulé (en secondes)
         scoreText.setText("Score " + scoreDataSingleton.score+ " | Enemies killed : " + scoreDataSingleton.enemiesKilled+ " | Time : " + scoreDataSingleton.timeElapsed);
-        System.out.println(scoreDataSingleton.score);
     }
 }

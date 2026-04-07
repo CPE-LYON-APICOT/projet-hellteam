@@ -35,6 +35,8 @@ public class EnemyShipService {
         }
     }
 
+
+    //
     private Image getImageForEnemy(EnemyShip enemyShip) {
         String imagePath = switch (enemyShip.getType()) {
             case "ClassicEnemy" -> "/images/enemyShip.png";
