@@ -40,7 +40,7 @@ public class SoundService implements IEventsObserver {
         try {
             // Correction : utilise getResource au lieu de File pour l'arrière-plan
             AudioInputStream stream = AudioSystem.getAudioInputStream(
-                    Objects.requireNonNull(getClass().getResource("/sound/BackgroundSound.wav"))
+                    Objects.requireNonNull(getClass().getResource("/sound/Nebula_Navigator.wav"))
             );
             backgroundClip = AudioSystem.getClip();
             backgroundClip.open(stream);
