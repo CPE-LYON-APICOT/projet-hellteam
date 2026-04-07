@@ -18,7 +18,7 @@ public class EnemyShipService {
 
         if (enemyShipList.isEmpty()) {
             for (int i = 0; i < 10; i++) {
-                EnemyShip enemyShip = EnemyFactory.CreateEnemy(10.0 + (i * 80), 40.0, 1, 5, 100, 100, 1);// Décale chaque ennemi horizontalement
+                EnemyShip enemyShip = EnemyFactory.CreateEnemy(10.0 + (i * 80), 40.0, 90, 5, 100, 100, 1);// Décale chaque ennemi horizontalement
                 if (enemyShip != null) {
                     enemyShipList.add(enemyShip);
                     Image enemyImage = getImageForEnemy(enemyShip);
@@ -30,6 +30,7 @@ public class EnemyShipService {
                     System.out.println("x" + enemyShip.x + "y" + enemyShip.y);
                     imageView.setLayoutX(enemyShip.x);
                     imageView.setLayoutY(enemyShip.y);
+                    imageView.setRotate(enemyShip.angle);
 
                     // Ajoute l'ImageView au Pane
                     gamePane.getChildren().add(imageView);
