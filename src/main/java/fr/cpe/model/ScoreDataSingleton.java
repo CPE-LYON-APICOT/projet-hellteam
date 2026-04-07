@@ -1,9 +1,9 @@
 package fr.cpe.model;
 
 public class ScoreDataSingleton {
-    int score;
+    public int score;
     int maxScore;
-    int enemiesKilled;
+    public int enemiesKilled;
     int timeElapsed;
     // currentWave : envisager système de vagues
     // enemiesRemainingForWave
@@ -21,6 +21,14 @@ public class ScoreDataSingleton {
             instance = new ScoreDataSingleton();
         }
         return instance;
+    }
+
+    public int getEnemiesKilled() {
+        return enemiesKilled;
+    }
+
+    public void setEnemiesKilled(int enemiesKilled) {
+        this.enemiesKilled = enemiesKilled;
     }
 }
 

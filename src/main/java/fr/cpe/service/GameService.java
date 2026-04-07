@@ -65,12 +65,16 @@ public class GameService {
     private final AllyShipService allyShipService;
     private EnemyShipService enemyShipService;
     private ProjectileService projectileService;
+    private final SoundService soundService;
+
     @Inject
-    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService, ProjectileService projectileService) {
+    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService, ProjectileService projectileService, SoundService soundService) {
         //this.ballService = ballService;
         this.allyShipService = allyShipService;
         this.enemyShipService = enemyShipService;
         this.projectileService = projectileService;
+        this.soundService = soundService;
+        soundService.start();
     }
 
     /**
