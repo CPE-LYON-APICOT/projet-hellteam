@@ -11,4 +11,5 @@ abstract public class EnemyShip extends Ship {
     }
     public abstract String getType();
 
+
 }
