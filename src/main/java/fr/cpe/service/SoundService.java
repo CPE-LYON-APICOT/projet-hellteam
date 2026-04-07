@@ -1,13 +1,10 @@
 package fr.cpe.service;
 
 import javax.sound.sampled.*;
-import java.io.File;
 
 import com.google.inject.Inject;
 import fr.cpe.model.EventService;
 
-import javax.print.attribute.standard.Media;
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -37,8 +34,23 @@ public class SoundService implements IEventsObserver {
     }
 
 
+    private Clip backgroundClip;
+
     public void start() {
-        //Jouer la musique de fond
+        try {
+            // Correction : utilise getResource au lieu de File pour l'arrière-plan
+            AudioInputStream stream = AudioSystem.getAudioInputStream(
+                    Objects.requireNonNull(getClass().getResource("/sound/BackgroundSound.wav"))
+            );
+            backgroundClip = AudioSystem.getClip();
+            backgroundClip.open(stream);
+
+            // Boucle infinie
+            backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
+            backgroundClip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
