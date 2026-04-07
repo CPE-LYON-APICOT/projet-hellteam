@@ -84,6 +84,10 @@ public class GameService {
         gamePane.getChildren().add(text);*/
     }
 
+    // Fonction générant les projectiles pour tout ennemi
+    // Fonction bougeant les projectiles existants
+    // Fonction calculant les collisions et agissant en fonction.
+
     /**
      * Met à jour l'état du jeu (appelé à chaque frame).
      */
