@@ -4,7 +4,7 @@ public class ScoreDataSingleton {
     public int score;
     int maxScore;
     public int enemiesKilled;
-    int timeElapsed;
+    public double timeElapsed = 0;
     // currentWave : envisager système de vagues
     // enemiesRemainingForWave
 
@@ -13,6 +13,7 @@ public class ScoreDataSingleton {
 
     private ScoreDataSingleton()
     {
+
     }
     public static ScoreDataSingleton getInstance()
     {

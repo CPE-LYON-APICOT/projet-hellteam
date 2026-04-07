@@ -13,6 +13,7 @@ package fr.cpe.service;
 // ╚══════════════════════════════════════════════════════════════════════════════╝
 
 import com.google.inject.Inject;
+import fr.cpe.model.ScoreDataSingleton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -66,14 +67,16 @@ public class GameService {
     private EnemyShipService enemyShipService;
     private ProjectileService projectileService;
     private final SoundService soundService;
+    private final ScoreService scoreService;
 
     @Inject
-    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService, ProjectileService projectileService, SoundService soundService) {
+    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService, ProjectileService projectileService, SoundService soundService, ScoreService scoreService) {
         //this.ballService = ballService;
         this.allyShipService = allyShipService;
         this.enemyShipService = enemyShipService;
         this.projectileService = projectileService;
         this.soundService = soundService;
+        this.scoreService = scoreService;
         soundService.start();
     }
 
@@ -85,6 +88,7 @@ public class GameService {
         allyShipService.init(gamePane);
         enemyShipService.init(gamePane);
         projectileService.init(gamePane, allyShipService);
+        scoreService.init(gamePane);
 
 
         /*Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
@@ -103,6 +107,7 @@ public class GameService {
         //ballService.update(width, height);
         allyShipService.update();
         projectileService.update(width, height);
+        scoreService.update();
         // Ici que doivent être calculées les collisions, envoyer les events, etc ! Faire despawn les ships
     }
 }
