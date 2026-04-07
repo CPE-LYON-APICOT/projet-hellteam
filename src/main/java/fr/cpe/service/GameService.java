@@ -13,9 +13,13 @@ package fr.cpe.service;
 // ╚══════════════════════════════════════════════════════════════════════════════╝
 
 import com.google.inject.Inject;
+import fr.cpe.model.ScoreDataSingleton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import org.checkerframework.checker.fenum.qual.SwingHorizontalOrientation;
+
+import java.util.List;
 
 /**
  * Service de jeu — gère l'état du jeu et ses éléments visuels.
@@ -58,28 +62,52 @@ import javafx.scene.text.Text;
  */
 public class GameService {
 
-    private final BallService ballService;
+    //private final BallService ballService;
+    private final AllyShipService allyShipService;
+    private EnemyShipService enemyShipService;
+    private ProjectileService projectileService;
+    private final SoundService soundService;
+    private final ScoreService scoreService;
 
     @Inject
-    public GameService(BallService ballService) {
-        this.ballService = ballService;
+    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService, ProjectileService projectileService, SoundService soundService, ScoreService scoreService) {
+        //this.ballService = ballService;
+        this.allyShipService = allyShipService;
+        this.enemyShipService = enemyShipService;
+        this.projectileService = projectileService;
+        this.soundService = soundService;
+        this.scoreService = scoreService;
+        soundService.start();
     }
 
     /**
      * Initialise les éléments visuels du jeu (appelé une fois au démarrage).
      */
     public void init(Pane gamePane) {
-        ballService.init(gamePane);
+        //ballService.init(gamePane);
+        allyShipService.init(gamePane);
+        enemyShipService.init(gamePane);
+        projectileService.init(gamePane, allyShipService);
+        scoreService.init(gamePane);
 
-        Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
+
+        /*Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
         text.setFill(Color.web("#cdd6f4"));
-        gamePane.getChildren().add(text);
+        gamePane.getChildren().add(text);*/
     }
+
+    // Fonction générant les projectiles pour tout ennemi
+    // Fonction bougeant les projectiles existants
+    // Fonction calculant les collisions et agissant en fonction.
 
     /**
      * Met à jour l'état du jeu (appelé à chaque frame).
      */
     public void update(double width, double height) {
-        ballService.update(width, height);
+        //ballService.update(width, height);
+        allyShipService.update();
+        projectileService.update(width, height);
+        scoreService.update();
+        // Ici que doivent être calculées les collisions, envoyer les events, etc ! Faire despawn les ships
     }
 }
