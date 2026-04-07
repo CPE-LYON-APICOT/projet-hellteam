@@ -4,13 +4,9 @@ import com.google.inject.Inject;
 import fr.cpe.engine.InputService;
 import fr.cpe.model.*;
 import fr.cpe.utils.ProjectileFactory;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
 import java.util.*;
 

@@ -3,7 +3,6 @@ package fr.cpe.service;
 import javax.sound.sampled.*;
 
 import com.google.inject.Inject;
-import fr.cpe.model.EventService;
 
 import java.io.IOException;
 import java.util.Objects;

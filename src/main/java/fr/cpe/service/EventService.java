@@ -1,6 +1,5 @@
-package fr.cpe.model;
+package fr.cpe.service;
 
-import fr.cpe.service.IEventsObserver;
 import jakarta.inject.Singleton;
 
 import java.util.ArrayList;
