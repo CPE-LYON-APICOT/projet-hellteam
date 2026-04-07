@@ -11,10 +11,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class EnemyShipService {
-    private List<EnemyShip> enemyShipList;
 
     public void init(Pane gamePane) {
-        enemyShipList = new ArrayList<>();
+        List<EnemyShip> enemyShipList = new ArrayList<>();
 
         if (enemyShipList.isEmpty()) {
             for (int i = 0; i < 10; i++) {
