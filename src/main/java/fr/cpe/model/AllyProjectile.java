@@ -1,7 +1,7 @@
 package fr.cpe.model;
 
 public class AllyProjectile extends Projectile{
-    public AllyProjectile(double x, double y, int direction, int speed) {
-        super(x, y, direction, speed);
+    public AllyProjectile(double x, double y, int direction, int speed, Ship launcher) {
+        super(x, y, direction, speed, launcher);
     }
 }
