@@ -16,6 +16,7 @@ import com.google.inject.Inject;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import org.checkerframework.checker.fenum.qual.SwingHorizontalOrientation;
 
 import java.util.List;
 
@@ -65,10 +66,11 @@ public class GameService {
     private EnemyShipService enemyShipService;
     private ProjectileService projectileService;
     @Inject
-    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService) {
+    public GameService(BallService ballService, AllyShipService allyShipService, EnemyShipService enemyShipService, ProjectileService projectileService) {
         //this.ballService = ballService;
         this.allyShipService = allyShipService;
         this.enemyShipService = enemyShipService;
+        this.projectileService = projectileService;
     }
 
     /**
@@ -78,6 +80,7 @@ public class GameService {
         //ballService.init(gamePane);
         allyShipService.init(gamePane);
         enemyShipService.init(gamePane);
+        projectileService.init(gamePane, allyShipService);
 
 
         /*Text text = new Text(20, 30, "Projet POO — À vous de jouer !");
@@ -95,6 +98,7 @@ public class GameService {
     public void update(double width, double height) {
         //ballService.update(width, height);
         allyShipService.update();
+        projectileService.update(width, height);
         // Ici que doivent être calculées les collisions, envoyer les events, etc ! Faire despawn les ships
     }
 }
