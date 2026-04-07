@@ -61,7 +61,7 @@ public class ProjectileService {
         projectileAllyMap.put((AllyProjectile) projectile, imageViewProjectile);
         if (allyShipService.isTwoPlayers()) {
             System.out.println("Player 2 shoot");
-            Projectile projectile2 = ProjectileFactory.CreateAllyProjectile(allyShipService.getPlayer1());
+            Projectile projectile2 = ProjectileFactory.CreateAllyProjectile(allyShipService.getPlayer2());
             ImageView imageViewProjectile2 = new ImageView(returnAllyProjectileImage());
             imageViewProjectile2.setFitWidth(20);
             imageViewProjectile2.setFitHeight(20);
