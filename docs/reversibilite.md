@@ -1,6 +1,6 @@
 # Document de réversibilité technique
 
-> Ce document est destiné à l'équipe qui reprendra la maintenance du projet. Soyez honnêtes et exhaustifs. Pas d'enjolivement.
+<!--Ce document est destiné à l'équipe qui reprendra la maintenance du projet. Soyez honnêtes et exhaustifs. Pas d'enjolivement.-->
 
 ## Architecture actuelle
 
@@ -106,12 +106,18 @@ EventService "1" --> "*" IEventsObserver
 | Bug                                                                                                                     | Sévérité   | Conditions de reproduction                                                                                         |
 |-------------------------------------------------------------------------------------------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------|
 | Les vaisseaux, alliés ou ennemis peuvent sortir hors de l'interface, et évoluer ainsi à l'extérieur de la zone prévue   | Moyenne    | Déplacer les vaisseaux alliés avec les flèches directionnelles, ou déplacer les ennemis selon la logique de code   |
-| ----------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
 | Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde                                                 |
 
 ## Limitations techniques
 
 <!-- Ce qui ne fonctionne pas ou fonctionne partiellement. -->
+- Pas de gestion de collision entre les projectiles et les vaisseaux, ni de gestion de dégâts.
+- Pas de système d'upgrades pour les vaisseaux alliés.
+- Pas de tirs d'ennemis.
+- Pas de comportements d'ennemis définis
+- Pas de gestion des limites de l'interface pour les vaisseaux alliés et ennemis.
+- Pas de condition de fin de partie définie.
+- Pas de score évoluant en fonction des actions du joueur (implémenté, mais pas fonctionnel)
 
 ## Points de vigilance pour la reprise
 
@@ -123,7 +129,10 @@ EventService "1" --> "*" IEventsObserver
 
 ## Améliorations recommandées
 
-| Amélioration | Difficulté | Justification |
-|--------------|------------|---------------|
-|              | Facile / Moyen / Complexe |   |
-
+| Amélioration                                                                                                                              | Difficulté | Justification                                                            |
+|-------------------------------------------------------------------------------------------------------------------------------------------|-----------|--------------------------------------------------------------------------|
+| Mise en place d'un menu                                                                                                                   | Moyen     | Configuration facile des options (au lieu du random pour 1 ou 2 joueurs) |
+| Calcul de la position avec blocage en conséquence                                                                                         | Facile    | Eviter une sortie d'interface                                            |
+| Mettre en place un algorithme/IA pour un fonctionnement complexe des ennemis                                                              | Complexe  | Rendre cohérent les actions ennemies                                     |
+| Empêcher la collision entre deux vaisseaux alliés en fonction d'une certaine limite autour de leurs coordonées x,y                        | Moyen     | Rendre plus cohérent les collisions alliées                              |
+| Mettre en place une accélération (bouton appuyé) impliquant vitesse max et décélération (bouton relaché) pour les alliés voir les ennemis | Moyen     | Mouvement plus fluide et naturel                                         |

@@ -1,7 +1,5 @@
 # Fiche rendu projet
-
-> Ce document est un bilan destiné au client. Présentez ce qui a été livré, ce qui fonctionne, et tournez habilement ce qui manque. Pas de jargon technique — on parle de fonctionnalités et de valeur perçue.
-
+<!-- Ce document est un bilan destiné au client. Présentez ce qui a été livré, ce qui fonctionne, et tournez habilement ce qui manque. Pas de jargon technique — on parle de fonctionnalités et de valeur perçue.-->
 ## Rappel du projet
 
 <!-- Reprenez brièvement le pitch initial. Qu'aviez-vous promis ? -->
