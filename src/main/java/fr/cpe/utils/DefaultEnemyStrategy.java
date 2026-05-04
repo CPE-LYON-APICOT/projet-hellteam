@@ -20,7 +20,7 @@ public class DefaultEnemyStrategy implements EnemyStrategy {
                 }
             }
 
-            enemyShooter.shoot(closest);
+            //enemyShooter.shoot(closest);
         }
     }
 
