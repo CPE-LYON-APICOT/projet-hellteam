@@ -104,10 +104,10 @@ EventService "1" --> "*" IEventsObserver
 
 <!-- Listez tous les bugs identifiés, même mineurs. Précisez les conditions de reproduction. -->
 
-| Bug                                                                                                                     | Sévérité   | Conditions de reproduction                                                                                         |
-|-------------------------------------------------------------------------------------------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------|
-| Les vaisseaux, alliés ou ennemis peuvent sortir hors de l'interface, et évoluer ainsi à l'extérieur de la zone prévue   | Moyenne    | Déplacer les vaisseaux alliés avec les flèches directionnelles, ou déplacer les ennemis selon la logique de code   |
-| Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde                                                 |
+| Bug                                                                                                                     | Sévérité   | Conditions de reproduction                                                                                                         |
+|-------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Les vaisseaux, alliés ou ennemis peuvent sortir hors de l'interface, et évoluer ainsi à l'extérieur de la zone prévue   | Moyenne    | Déplacer les vaisseaux alliés avec les flèches directionnelles, ou déplacer les ennemis selon la logique de code                   |
+| Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde dans le code / faire durer le jeu trop longtemps pour X raison  |
 
 ## Limitations techniques
 
