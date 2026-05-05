@@ -104,10 +104,10 @@ EventService "1" --> "*" IEventsObserver
 
 <!-- Listez tous les bugs identifiés, même mineurs. Précisez les conditions de reproduction. -->
 
-| Bug                                                                                                                     | Sévérité   | Conditions de reproduction                                                                                         |
-|-------------------------------------------------------------------------------------------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------|
-| Les vaisseaux, alliés ou ennemis peuvent sortir hors de l'interface, et évoluer ainsi à l'extérieur de la zone prévue   | Moyenne    | Déplacer les vaisseaux alliés avec les flèches directionnelles, ou déplacer les ennemis selon la logique de code   |
-| Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde                                                 |
+| Bug                                                                                                                     | Sévérité   | Conditions de reproduction                                                                                         | Comment régler le bug                                                                                                |
+|-------------------------------------------------------------------------------------------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Les vaisseaux, alliés ou ennemis peuvent sortir hors de l'interface, et évoluer ainsi à l'extérieur de la zone prévue   | Moyenne    | Déplacer les vaisseaux alliés avec les flèches directionnelles, ou déplacer les ennemis selon la logique de code   | Faire en sorte que la position des vaisseaux soit calculé et ainsi bloquer le vaisseau à la position de la bordure   |
+| Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde                                                 | Supprimer le tire dès qu'ils sortent de l'écran                                                                      |
 
 ## Limitations techniques
 
