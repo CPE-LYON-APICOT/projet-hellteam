@@ -142,5 +142,6 @@ EventService "1" --> "*" IEventsObserver
 
 - Ayant bien fonctionné :
     - Mise en place des mouvements du vaisseau
+    - Tir automatique toutes les secondes
 - Nous étions ambitieux sur les fonctionnalités : système en théorie complexe de générations d'ennemis pouvant impliquer des comportements délicats à implémenter (gérer le déplacement déterministe, aléatoire, plus le tir, aurait impliqué un système important pour que le déroulement du jeu ait du sens), et autre gestion des collisions.
 - Etant un jeu impliquant du mouvement, de la gestion de position à toutes les frames, etc... Le développement a été focalisé sur les classes métiers. Les factory sont par exemple globalement fonctionnelles, mais pas utilisées à leur plein potentiel pour spawn des vaisseaux sur l'interface graphique.
