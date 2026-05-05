@@ -18,6 +18,8 @@ Des sons seraient joués lors d'événements, comme lorsqu'un tir est effectué,
 <!-- Présentez les fonctionnalités livrées. Captures d'écran / GIFs animés bienvenus. -->
 <!-- Placez vos images dans docs/images/ et référencez-les avec : ![description](images/nom-du-fichier.png) -->
 
+![gamplay.gif](images/gameplay.gif)
+
 ### Fonctionnalité 1 — *Contrôle de vaisseaux*
 
 Un ou deux personnes sont bien capables de contrôler un vaisseau dans un espace en deux dimensions avec les touches ZQSD ou/et flèches directionnelles.
