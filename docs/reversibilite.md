@@ -107,7 +107,7 @@ EventService "1" --> "*" IEventsObserver
 | Bug                                                                                                                     | Sévérité   | Conditions de reproduction                                                                                       | Comment régler le bug                                                                                               |
 |-------------------------------------------------------------------------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 | Les vaisseaux, alliés ou ennemis peuvent sortir hors de l'interface, et évoluer ainsi à l'extérieur de la zone prévue   | Moyenne    | Déplacer les vaisseaux alliés avec les flèches directionnelles, ou déplacer les ennemis selon la logique de code | Faire en sorte que la position des vaisseaux soit calculée et ainsi bloquer le vaisseau à la position de la bordure |
-| Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde / / faire durer le jeu trop longtemps pour X raison                                             | Supprimer les projectiles étant passés en dehors de l'interface visible                                             |
+| Trop d'entités ralentissent voire font crasher le jeu                                                                   | Elevée     | Provoquer un nombre de projectiles/ennemis très élevé à la seconde / / faire durer le jeu trop longtemps pour X raison                                             | Supprimer les projectiles étant passés en dehors de l'interface visible |
 
 ## Limitations techniques
 
@@ -134,11 +134,13 @@ EventService "1" --> "*" IEventsObserver
 |-------------------------------------------------------------------------------------------------------------------------------------------|-----------|--------------------------------------------------------------------------|
 | Mise en place d'un menu                                                                                                                   | Moyen     | Configuration facile des options (au lieu du random pour 1 ou 2 joueurs) |
 | Calcul de la position avec blocage en conséquence                                                                                         | Facile    | Eviter une sortie d'interface                                            |
-| Mettre en place un algorithme/IA pour un fonctionnement complexe des ennemis                                                              | Complexe  | Rendre cohérent les actions ennemies                                     |
+| Mettre en place un algorithme/IA pour un fonctionnement complexe des ennemis                                                              | Complexe  | Rendre cohérentes les actions ennemies                                   |
 | Empêcher la collision entre deux vaisseaux alliés en fonction d'une certaine limite autour de leurs coordonées x,y                        | Moyen     | Rendre plus cohérent les collisions alliées                              |
 | Mettre en place une accélération (bouton appuyé) impliquant vitesse max et décélération (bouton relaché) pour les alliés voir les ennemis | Moyen     | Mouvement plus fluide et naturel                                         |
 
-
 ## Points supplémentaires :  
 
+- Ayant bien fonctionné :
+    - Mise en place des mouvements du vaisseau
 - Nous étions ambitieux sur les fonctionnalités : système en théorie complexe de générations d'ennemis pouvant impliquer des comportements délicats à implémenter (gérer le déplacement déterministe, aléatoire, plus le tir, aurait impliqué un système important pour que le déroulement du jeu ait du sens), et autre gestion des collisions.
+- Etant un jeu impliquant du mouvement, de la gestion de position à toutes les frames, etc... Le développement a été focalisé sur les classes métiers. Les factory sont par exemple globalement fonctionnelles, mais pas utilisées à leur plein potentiel pour spawn des vaisseaux sur l'interface graphique.
