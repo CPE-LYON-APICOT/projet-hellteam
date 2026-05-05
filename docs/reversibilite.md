@@ -98,6 +98,7 @@ EnemyShip --> EnemyStrategy
 EventService "1" --> "*" IEventsObserver
 @enduml
 ```
+![img_2.png](img_2.png)
 
 ## Bugs connus
 
