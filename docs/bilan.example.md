@@ -12,7 +12,7 @@ BounceWorld devait proposer une expérience interactive autour de balles rebondi
 
 Une balle se déplace dans la fenêtre et rebondit sur les quatre bords. À chaque rebond, sa couleur change aléatoirement. Le mouvement est continu, sans traversée de bord ni ralentissement.
 
-<!-- ![Balle rebondissante](images/bounce-demo.gif) -->
+<!-- ![Balle rebondissante](s/bounce-demo.gif) -->
 
 ### Fonctionnalité 2 — Contrôle de trajectoire au clavier
 
