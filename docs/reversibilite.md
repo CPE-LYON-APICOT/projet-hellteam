@@ -136,3 +136,8 @@ EventService "1" --> "*" IEventsObserver
 | Mettre en place un algorithme/IA pour un fonctionnement complexe des ennemis                                                              | Complexe  | Rendre cohérent les actions ennemies                                     |
 | Empêcher la collision entre deux vaisseaux alliés en fonction d'une certaine limite autour de leurs coordonées x,y                        | Moyen     | Rendre plus cohérent les collisions alliées                              |
 | Mettre en place une accélération (bouton appuyé) impliquant vitesse max et décélération (bouton relaché) pour les alliés voir les ennemis | Moyen     | Mouvement plus fluide et naturel                                         |
+
+
+## Points supplémentaires :  
+
+- Nous étions ambitieux sur les fonctionnalités : système en théorie complexe de générations d'ennemis pouvant impliquer des comportements délicats à implémenter (gérer le déplacement déterministe, aléatoire, plus le tir, aurait impliqué un système important pour que le déroulement du jeu ait du sens), et autre gestion des collisions.
